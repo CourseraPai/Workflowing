@@ -1,0 +1,46 @@
+---
+title: "Results report: Outliers in Bean data"
+author: "Anitha Pai"
+output: html_document
+---
+
+Display boxplots to display outliers in each column of the bean data
+
+```{r setup,include=FALSE,message=FALSE}
+library(drake)
+library(gridExtra)
+```
+
+Abstract: Images of 13,611 grains of 7 different registered dry beans were taken with a high-resolution camera. A total of 16 features; 12 dimensions and 4 shape forms, were obtained from the grains.Sample data displayed below
+
+```{r data,echo=FALSE,message=FALSE}
+readd(display_bean)
+```
+
+which of these variables are integers and pass the Shapiro test for Normality.
+
+```{r data2,echo=FALSE,message=FALSE}
+readd(is_it_normal_colnames)
+```
+
+
+Plot the normality and qq plots for all such columns
+
+```{r, figures-side, fig.show="hold", out.width="50%",echo=FALSE,message=FALSE}
+
+loadd(plot1)
+loadd(plot2)
+
+par(mar = c(4, 4, .1, .1))
+plot(plot1)
+plot(plot2)
+```
+
+
+Now, these columns go through Rosner test to be checked for outliers.Plot these columns and display their outliers via boxplots
+
+```{r, fig.show="hold",echo=FALSE,message=FALSE}
+
+loadd(plot3)
+plot(plot3)
+```
